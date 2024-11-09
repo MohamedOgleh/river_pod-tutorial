@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_tutorial/main.dart';
 import 'package:riverpod_tutorial/providers/name_provider.dart';
 import 'package:riverpod_tutorial/providers/user_provider.dart';
+import 'package:riverpod_tutorial/services/services.api_service.dart';
 import 'package:riverpod_tutorial/splash_screen.dart';
 
 class LoginScreen extends ConsumerWidget {
@@ -30,11 +31,12 @@ class LoginScreen extends ConsumerWidget {
               child: const Text("Change text"),
             ),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SplashScreen()));
+              onPressed: ()async {
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const SplashScreen()));
+                print(await TodoService.fetchTodos());
               },
               child: const Text("Go to splash"),
             )
